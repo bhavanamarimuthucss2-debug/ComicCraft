@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your own AI-powered comic story with ComicCraft.">
+  <title>ComicCraft — AI Comic Story Creator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✦</span> ComicCraft</a>
+    <span class="tagline">YOUR IDEA. YOUR COMIC.</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">✦ AI-POWERED STORYTELLING</div>
+      <h1>Turn your ideas into<br><span>comic adventures.</span></h1>
+      <p>Dream up a story. Choose a vibe. Let AI shape it into a panel-by-panel comic script.</p>
+    </section>
+
+    <section class="creator card">
+      <div class="section-heading">
+        <div><span class="step">01</span><h2>Build your story</h2></div>
+        <span class="tiny-label">LET YOUR IMAGINATION GO</span>
+      </div>
+      <form id="comic-form">
+        <label for="idea">What's your comic about?</label>
+        <textarea id="idea" name="idea" rows="4" maxlength="1200" required placeholder="Example: A shy robot discovers a hidden garden on Mars and tries to save it..."></textarea>
+        <div class="controls">
+          <div class="field">
+            <label for="genre">Choose a genre</label>
+            <select id="genre" name="genre">
+              <option>Adventure</option><option>Fantasy</option><option>Science Fiction</option>
+              <option>Comedy</option><option>Mystery</option><option>Slice of Life</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="panels">Comic panels</label>
+            <select id="panels" name="panels">
+              <option value="2">2 panels</option><option value="4" selected>4 panels</option>
+              <option value="6">6 panels</option><option value="8">8 panels</option>
+            </select>
+          </div>
+        </div>
+        <button id="generate-btn" type="submit"><span>✦</span> Generate my comic <span class="arrow">→</span></button>
+        <p class="privacy-note">Your story idea is sent to Gemini to generate the comic script.</p>
+      </form>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="result-section" class="result-section hidden">
+      <div class="section-heading result-heading">
+        <div><span class="step">02</span><h2>Your comic story</h2></div>
+        <button id="download-btn" class="secondary-btn" type="button">Download script ↓</button>
+      </div>
+      <div id="comic-result"></div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>From idea to comic in 3 steps</h2>
+      <div class="steps">
+        <div class="mini-card"><span>01</span><h3>Imagine</h3><p>Describe the story you want to tell.</p></div>
+        <div class="mini-card"><span>02</span><h3>Create</h3><p>Gemini turns your idea into scenes and dialogue.</p></div>
+        <div class="mini-card"><span>03</span><h3>Enjoy</h3><p>Read your comic panels and save the script.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer>Made for curious minds · ComicCraft</footer>
+  <script src="script.js"></script>
+</body>
+</html>
