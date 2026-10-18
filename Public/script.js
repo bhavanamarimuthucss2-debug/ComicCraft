@@ -11,7 +11,7 @@ const downloadBtn = document.getElementById("download-btn");
 
 let currentScript = "";
 
-form.addEventListener("submit", async (event) => {
+form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const idea = ideaInput.value.trim();
@@ -19,13 +19,13 @@ form.addEventListener("submit", async (event) => {
   const panels = Number(panelsInput.value);
 
   if (!idea) {
-    status.textContent = "Please enter your comic story idea.";
+    status.textContent = "Please enter your story idea.";
     return;
   }
 
   generateBtn.disabled = true;
   generateBtn.textContent = "Creating your comic...";
-  status.textContent = "Your story is being generated. Please wait.";
+  status.textContent = "Generating your comic story...";
   resultSection.classList.add("hidden");
 
   try {
@@ -34,46 +34,54 @@ form.addEventListener("submit", async (event) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ idea, genre, panels })
+      body: JSON.stringify({
+        idea: idea,
+        genre: genre,
+        panels: panels
+      })
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error || "Unable to generate your comic.");
+      throw new Error(data.error || "Comic generation failed.");
     }
 
     const story = data.story || data.text;
 
     if (!story) {
-      throw new Error("No story was returned. Please try again.");
+      throw new Error("No story received. Please try again.");
     }
 
     currentScript = story;
     comicResult.replaceChildren();
 
-    const pre = document.createElement("pre");
-    pre.textContent = story;
-    pre.style.whiteSpace = "pre-wrap";
-    pre.style.overflowWrap = "anywhere";
-    comicResult.appendChild(pre);
+    const storyText = document.createElement("pre");
+    storyText.textContent = story;
+    storyText.style.whiteSpace = "pre-wrap";
+    storyText.style.overflowWrap = "anywhere";
 
+    comicResult.appendChild(storyText);
     resultSection.classList.remove("hidden");
     status.textContent = "Your comic story is ready!";
-    resultSection.scrollIntoView({ behavior: "smooth" });
+
+    resultSection.scrollIntoView({
+      behavior: "smooth"
+    });
 
   } catch (error) {
     status.textContent =
       error.message || "Something went wrong. Please try again.";
   } finally {
     generateBtn.disabled = false;
-    generateBtn.innerHTML = '<span>✦</span> Generate my comic <span class="arrow">→</span>';
+    generateBtn.innerHTML =
+      '<span>✦</span> Generate my comic <span class="arrow">→</span>';
   }
 });
 
-downloadBtn.addEventListener("click", () => {
+downloadBtn.addEventListener("click", function () {
   if (!currentScript) {
-    status.textContent = "Generate a comic before downloading.";
+    status.textContent = "Generate a comic first.";
     return;
   }
 
@@ -90,5 +98,4 @@ downloadBtn.addEventListener("click", () => {
 
   URL.revokeObjectURL(url);
 });
-
-                      
+  
