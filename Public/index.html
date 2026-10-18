@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComicCraft - AI Comic Story Creator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✨ ComicCraft</h1>
+    <p>Your Idea. Your Comic.</p>
+  </header>
+
+  <main>
+    <h2>Turn your ideas into comic adventures!</h2>
+    <p>Create your own AI-powered comic story.</p>
+
+    <form id="comic-form">
+      <label for="idea">What's your comic about?</label>
+      <textarea id="idea" name="idea" rows="4"
+        placeholder="Enter your story idea..." required></textarea>
+
+      <label for="genre">Choose a genre</label>
+      <select id="genre" name="genre">
+        <option>Adventure</option>
+        <option>Fantasy</option>
+        <option>Science Fiction</option>
+        <option>Comedy</option>
+        <option>Mystery</option>
+      </select>
+
+      <label for="panels">Number of panels</label>
+      <select id="panels" name="panels">
+        <option value="2">2 panels</option>
+        <option value="4" selected>4 panels</option>
+        <option value="6">6 panels</option>
+        <option value="8">8 panels</option>
+      </select>
+
+      <button type="submit">Generate My Comic ✨</button>
+    </form>
+
+    <p id="status"></p>
+    <section id="result-section" hidden>
+      <h2>Your Comic Story</h2>
+      <div id="comic-result"></div>
+      <button id="download-btn" type="button">Download Script</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made for curious minds · ComicCraft</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
